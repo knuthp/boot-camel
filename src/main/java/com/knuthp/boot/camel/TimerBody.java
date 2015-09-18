@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimerBody {
 
-	public MyEntity someMethod() {
-		return new MyEntity("A", "B");
+	public Customer someMethod() {
+		return new Customer("A", "B");
 	}
 
 }

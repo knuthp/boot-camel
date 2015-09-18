@@ -8,8 +8,9 @@ public class MyRouter extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		from("timer://foo?fixedRate=true&period=1000").to("bean:timerBody").to(
-				"log:com.knuthp.boot.camel.MyRouter?level=INFO");
+		from("timer://foo?fixedRate=true&period=1000").to("bean:timerBody")
+				.to("log:com.knuthp.boot.camel.MyRouter?level=INFO")
+				.to("jpa:TimerBody");
 	}
 
 }
