@@ -84,6 +84,11 @@
 			<artifactId>spring-boot-starter-basic</artifactId>
 			<version>${activiti.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-jmx</artifactId>
+			<version>${activiti.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
