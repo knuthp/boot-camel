@@ -1,5 +1,8 @@
 package com.knuthp.boot.camel;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 import org.apache.camel.EndpointInject;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.component.mock.MockEndpoint;
@@ -13,7 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
-@SpringApplicationConfiguration(classes = { MyRouterTest.class, MyRouter.class })
+@SpringApplicationConfiguration(classes = { MyRouterTest.class,
+		TimerBody.class, MyRouter.class })
 @IntegrationTest
 public class MyRouterTest {
 	@Autowired
@@ -22,17 +26,26 @@ public class MyRouterTest {
 	@EndpointInject(uri = "mock:test")
 	MockEndpoint mockEndpoint;
 
+	@Autowired
+	CustomerRepository customerRepository;
+
 	@Test
-	public void test() throws InterruptedException {
+	public void testCamelUnitTest() throws InterruptedException {
 		mockEndpoint.expectedMinimumMessageCount(1);
 
 		producerTemplate.sendBody("direct:foo", "Hello unit testing");
-		producerTemplate.sendBody("direct:foo", "Hello unit testing");
-		producerTemplate.sendBody("direct:foo", "Hello unit testing");
-		producerTemplate.sendBody("direct:foo", "Hello unit testing");
-		producerTemplate.sendBody("direct:foo", "Hello unit testing");
 
 		mockEndpoint.assertIsSatisfied();
+	}
+
+	@Test
+	public void testJpaRoute() throws Exception {
+		producerTemplate.sendBody("direct:startJpa", "");
+
+		assertThat(customerRepository.count(), equalTo(1L));
+		Iterable<Customer> findAll = customerRepository.findAll();
+		assertThat(findAll.iterator().next().getFirstName(), equalTo("A"));
+		assertThat(findAll.iterator().next().getLastName(), equalTo("B"));
 	}
 
 }

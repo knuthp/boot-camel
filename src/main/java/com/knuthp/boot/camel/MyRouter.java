@@ -1,14 +1,15 @@
 package com.knuthp.boot.camel;
 
-import org.apache.camel.spring.boot.FatJarRouter;
+import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyRouter extends FatJarRouter {
+public class MyRouter extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		from("timer://foo?fixedRate=true&period=1000").to("bean:timerBody")
+		from("timer://foo?fixedRate=true&period=1000").to("direct:startJpa");
+		from("direct:startJpa").to("bean:timerBody")
 				.to("log:com.knuthp.boot.camel.MyRouter?level=INFO")
 				.to("jpa:TimerBody?flushOnSend");
 
