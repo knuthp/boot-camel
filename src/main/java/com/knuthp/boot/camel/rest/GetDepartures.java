@@ -1,4 +1,4 @@
-package com.knuthp.boot.camel;
+package com.knuthp.boot.camel.rest;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

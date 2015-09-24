@@ -1,7 +1,9 @@
 package com.knuthp.boot.camel.jpa;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JpaRouter extends RouteBuilder {
 
 	@Override

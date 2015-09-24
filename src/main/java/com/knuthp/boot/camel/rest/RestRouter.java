@@ -3,9 +3,9 @@ package com.knuthp.boot.camel.rest;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.component.jackson.ListJacksonDataFormat;
+import org.springframework.stereotype.Component;
 
-import com.knuthp.boot.camel.GetDepartures;
-
+@Component
 public class RestRouter extends RouteBuilder {
 
 	@Override

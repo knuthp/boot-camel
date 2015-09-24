@@ -20,7 +20,6 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.knuthp.boot.camel.GetDepartures;
 import com.knuthp.boot.camel.jpa.TimerBody;
 
 @RunWith(SpringJUnit4ClassRunner.class)

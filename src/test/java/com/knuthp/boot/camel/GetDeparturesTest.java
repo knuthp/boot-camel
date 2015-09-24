@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.knuthp.boot.camel.rest.GetDepartures;
 
 public class GetDeparturesTest {
 	private static String JSON = "[\n"
