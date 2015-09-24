@@ -1,4 +1,4 @@
-package com.knuthp.boot.camel;
+package com.knuthp.boot.camel.activiti;
 
 import org.activiti.engine.ProcessEngine;
 import org.springframework.beans.factory.annotation.Autowired;

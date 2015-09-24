@@ -1,4 +1,4 @@
-package com.knuthp.boot.camel;
+package com.knuthp.boot.camel.jpa;
 
 import org.springframework.stereotype.Component;
 
